@@ -1,5 +1,6 @@
 Aplikasi yang bertujuan untuk mensimulasikan sebuah antrian
 
+Dibuat menggunakan Godot
 Menggunakan Add-on Easy Charts
 https://github.com/fenix-hub/godot-engine.easy-charts/
 
