@@ -1,0 +1,413 @@
+[gd_scene load_steps=10 format=3 uid="uid://djd15yyfkjfxf"]
+
+[ext_resource type="Script" path="res://simulation/input.gd" id="1_f20q2"]
+[ext_resource type="StyleBox" uid="uid://cflkmpvyxfwdg" path="res://simulation/new_style_box_input.tres" id="2_tx1co"]
+[ext_resource type="AudioStream" uid="uid://duv4txleb5hgi" path="res://simulationBGM.mp3" id="3_o6u5t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldpyg"]
+bg_color = Color(0.270588, 0.215686, 0.454902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.172549, 0.172549, 0.172549, 0.780392)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gjrdb"]
+
+[sub_resource type="SystemFont" id="SystemFont_ilfjo"]
+font_names = PackedStringArray("Berlin Sans FB")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dg4fm"]
+
+[sub_resource type="SystemFont" id="SystemFont_cns11"]
+font_names = PackedStringArray("Berlin Sans FB")
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boo8v"]
+bg_color = Color(0.776471, 0.54902, 0.192157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.227451, 0.133333, 0.0509804, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f20q2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+offset_right = 1322.0
+offset_bottom = 727.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldpyg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 1317.0
+offset_bottom = 724.0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Labl" type="Label" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.839216, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "Total Data"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TotalData" type="LineEdit" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("2_tx1co")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gjrdb")
+text = "100"
+placeholder_text = "0"
+alignment = 1
+max_length = 4
+expand_to_text_length = true
+caret_blink = true
+
+[node name="TotalDataSubmit" type="Button" parent="Panel/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "OK"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 100
+alignment = 2
+
+[node name="InsertDatas" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 180
+alignment = 1
+
+[node name="GeneratorLCG" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/InsertDatas"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/GeneratorLCG"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.839216, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.737255, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Generate LCG"
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/GeneratorLCG"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Digunakan untuk men-generate angka random.
+Masukkan seed LCG."
+
+[node name="sep" type="Control" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/GeneratorLCG"]
+layout_mode = 2
+
+[node name="LCG_seed" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/GeneratorLCG"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 2.87
+theme_override_fonts/font = SubResource("SystemFont_ilfjo")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("2_tx1co")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dg4fm")
+placeholder_text = "Seed"
+alignment = 1
+max_length = 8
+caret_blink = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/GeneratorLCG"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="GenerateLCG" type="Button" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/GeneratorLCG/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "GENERATE LCG"
+
+[node name="SaveLCG" type="Button" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/GeneratorLCG/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Save"
+
+[node name="InsertBeta" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/InsertDatas"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.839216, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.737255, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Insert Beta"
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Digunakan untuk men-generate waktu.
+Masukkan beta Interarrival dan Service Time."
+
+[node name="sep" type="Control" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.823529, 0.698039, 1)
+theme_override_fonts/font = SubResource("SystemFont_cns11")
+theme_override_font_sizes/font_size = 33
+text = "Interarrival"
+
+[node name="Interarrival" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ilfjo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_tx1co")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dg4fm")
+placeholder_text = "0"
+alignment = 1
+max_length = 4
+caret_blink = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.823529, 0.698039, 1)
+theme_override_fonts/font = SubResource("SystemFont_cns11")
+theme_override_font_sizes/font_size = 32
+text = "Service Time"
+
+[node name="ServiceTime" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ilfjo")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("2_tx1co")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dg4fm")
+placeholder_text = "0"
+alignment = 1
+max_length = 4
+caret_blink = true
+
+[node name="sep2" type="Control" parent="Panel/MarginContainer/VBoxContainer/InsertDatas/InsertBeta"]
+layout_mode = 2
+
+[node name="sep" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Bottombuttons" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 64
+alignment = 2
+
+[node name="Sim" type="Button" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Simulate"
+
+[node name="AutoSim" type="Button" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Auto-Simulate"
+
+[node name="sep" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="sep2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="sep3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="sep4" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="sep5" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.890196, 0.737255, 0.521569, 1)
+theme_override_fonts/font = SubResource("SystemFont_cns11")
+theme_override_font_sizes/font_size = 23
+text = "Replication"
+horizontal_alignment = 1
+
+[node name="Split" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/Bottombuttons/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_ilfjo")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_boo8v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dg4fm")
+text = "1"
+placeholder_text = "0"
+alignment = 1
+max_length = 1
+caret_blink = true
+
+[node name="CloseInput" type="Button" parent="Panel/MarginContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "X"
+
+[node name="ErrorLCG" type="Label" parent="Panel"]
+visible = false
+layout_mode = 2
+offset_left = 151.0
+offset_top = 448.0
+offset_right = 389.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Masukkan input yang valid."
+horizontal_alignment = 1
+
+[node name="SuccessLCG" type="Label" parent="Panel"]
+visible = false
+layout_mode = 2
+offset_left = 151.0
+offset_top = 448.0
+offset_right = 389.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0, 0.815686, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "LCG Generated."
+horizontal_alignment = 1
+
+[node name="ErrorSavedLCG" type="Label" parent="Panel"]
+visible = false
+layout_mode = 2
+offset_left = 151.0
+offset_top = 448.0
+offset_right = 389.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Generate LCG First."
+horizontal_alignment = 1
+
+[node name="SavedLCG" type="Label" parent="Panel"]
+visible = false
+layout_mode = 2
+offset_left = 151.0
+offset_top = 448.0
+offset_right = 389.0
+offset_bottom = 474.0
+theme_override_colors/font_color = Color(0, 0.815686, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "LCG saved to .csv"
+horizontal_alignment = 1
+
+[node name="ErrorTotalData" type="Label" parent="Panel"]
+visible = false
+layout_mode = 2
+offset_left = 36.0
+offset_top = 143.0
+offset_right = 274.0
+offset_bottom = 169.0
+theme_override_colors/font_color = Color(0.964706, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Masukkan input yang valid."
+horizontal_alignment = 1
+
+[node name="SuccessTotalData" type="Label" parent="Panel"]
+visible = false
+layout_mode = 2
+offset_left = 1.0
+offset_top = 143.0
+offset_right = 239.0
+offset_bottom = 169.0
+theme_override_colors/font_color = Color(0, 0.815686, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Changed total data."
+horizontal_alignment = 1
+
+[node name="ErrorSimulate" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = 246.5
+offset_right = 175.0
+offset_bottom = 274.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Masukkan input yang valid."
+horizontal_alignment = 1
+
+[node name="CurrentSeed" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 40.0
+offset_top = 667.0
+offset_right = 278.0
+offset_bottom = 693.0
+theme_override_font_sizes/font_size = 18
+text = "Seed: 0"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o6u5t")
+volume_db = -8.344
+autoplay = true

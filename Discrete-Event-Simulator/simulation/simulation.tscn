@@ -1,0 +1,393 @@
+[gd_scene load_steps=5 format=3 uid="uid://3glsqrd80tl0"]
+
+[ext_resource type="Script" path="res://simulation/simulation.gd" id="1_5rj3c"]
+[ext_resource type="Texture2D" uid="uid://wlg1cofxgywu" path="res://simulation/bgsim.jpg" id="1_m1aam"]
+[ext_resource type="PackedScene" uid="uid://djd15yyfkjfxf" path="res://simulation/input.tscn" id="2_is6ve"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_liv4e"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5rj3c")
+
+[node name="bg" type="TextureRect" parent="."]
+modulate = Color(0.435294, 0.45098, 0.364706, 1)
+self_modulate = Color(0.764706, 0.721569, 0.870588, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_m1aam")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_liv4e")
+
+[node name="seed" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Seed:"
+
+[node name="beta interarrival" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "beta_interarrival:"
+
+[node name="beta service" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Beta_service:"
+
+[node name="Replikasi_ke" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Replikasi ke-"
+
+[node name="Stats" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
+
+[node name="QueueView" type="HBoxContainer" parent="MarginContainer/Stats"]
+layout_mode = 2
+alignment = 2
+
+[node name="t" type="VBoxContainer" parent="MarginContainer/Stats/QueueView"]
+custom_minimum_size = Vector2(0, 750)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="dataleft" type="Label" parent="MarginContainer/Stats/QueueView/t"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Data Left: "
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/QueueView/t"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "QUEUE"
+
+[node name="FirstOnQueue" type="Label" parent="MarginContainer/Stats/QueueView/t"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.792157, 0.435294, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "-"
+horizontal_alignment = 1
+
+[node name="queues" type="Label" parent="MarginContainer/Stats/QueueView/t"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="StatisticContainer" type="VBoxContainer" parent="MarginContainer/Stats"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 70
+
+[node name="ClockEventList" type="HBoxContainer" parent="MarginContainer/Stats/StatisticContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/ClockEventList"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "CLOCK"
+
+[node name="Clock" type="Label" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/ClockEventList"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "EVENT LIST"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Arrival"
+horizontal_alignment = 1
+
+[node name="Arrival" type="Label" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Depart"
+horizontal_alignment = 1
+
+[node name="Depart" type="Label" parent="MarginContainer/Stats/StatisticContainer/ClockEventList/VBoxContainer2/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "0"
+horizontal_alignment = 1
+
+[node name="DelaydanArea" type="HBoxContainer" parent="MarginContainer/Stats/StatisticContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Number Delay"
+
+[node name="NumberDelay" type="Label" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Total Delay"
+
+[node name="TotalDelay" type="Label" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Area Q(t)"
+
+[node name="AreaQT" type="Label" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea/VBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Area B(t)"
+
+[node name="AreaBT" type="Label" parent="MarginContainer/Stats/StatisticContainer/DelaydanArea/VBoxContainer4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="ServerStatuses" type="HBoxContainer" parent="MarginContainer/Stats/StatisticContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/ServerStatuses"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/ServerStatuses/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Server Status"
+
+[node name="ServerStatus" type="Label" parent="MarginContainer/Stats/StatisticContainer/ServerStatuses/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.556863, 0.815686, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Idle"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/ServerStatuses"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/ServerStatuses/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Number In Queue"
+
+[node name="NumberInQueue" type="Label" parent="MarginContainer/Stats/StatisticContainer/ServerStatuses/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="Stats" type="HBoxContainer" parent="MarginContainer/Stats/StatisticContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/Stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/Stats/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "d(n)"
+horizontal_alignment = 1
+
+[node name="dn" type="Label" parent="MarginContainer/Stats/StatisticContainer/Stats/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/Stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/Stats/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "q(n)"
+horizontal_alignment = 1
+
+[node name="qn" type="Label" parent="MarginContainer/Stats/StatisticContainer/Stats/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/Stats/StatisticContainer/Stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Stats/StatisticContainer/Stats/VBoxContainer3"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "u(n)"
+horizontal_alignment = 1
+
+[node name="un" type="Label" parent="MarginContainer/Stats/StatisticContainer/Stats/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "0"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="MarginContainer/Stats"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Stats/ButtonContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="NextEvent" type="Button" parent="MarginContainer/Stats/ButtonContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Next Event"
+
+[node name="AutoSim" type="Button" parent="MarginContainer/Stats/ButtonContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Auto-simulate"
+
+[node name="OpenGraph" type="Button" parent="MarginContainer/Stats/ButtonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Open Graph"
+
+[node name="NextSplit" type="Button" parent="MarginContainer/Stats/ButtonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+disabled = true
+text = "Next Replica"
+
+[node name="Finish" type="Button" parent="MarginContainer/Stats/ButtonContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+disabled = true
+text = "Finish"
+
+[node name="Input" type="VBoxContainer" parent="MarginContainer"]
+z_as_relative = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 150
+
+[node name="sep" type="Control" parent="MarginContainer/Input"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Input"]
+layout_mode = 2
+theme_override_constants/separation = 300
+
+[node name="sep" type="Control" parent="MarginContainer/Input/HBoxContainer"]
+layout_mode = 2
+
+[node name="Control" parent="MarginContainer/Input/HBoxContainer" instance=ExtResource("2_is6ve")]
+layout_direction = 1
+layout_mode = 2

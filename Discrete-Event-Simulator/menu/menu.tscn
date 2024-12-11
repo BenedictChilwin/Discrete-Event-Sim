@@ -1,0 +1,193 @@
+[gd_scene load_steps=9 format=3 uid="uid://fwvgvxpuhu8t"]
+
+[ext_resource type="Script" path="res://menu/mainmenu.gd" id="1_8qeg8"]
+[ext_resource type="Texture2D" uid="uid://buvabdxo8et2k" path="res://menu/bg.jpg" id="1_ws8k4"]
+[ext_resource type="Texture2D" uid="uid://bvkhytr5676nx" path="res://menu/Ma_Chung_University_logo_and_font.svg.png" id="3_1j2d7"]
+[ext_resource type="PackedScene" uid="uid://7hapy5p3yj2d" path="res://menu/credits.tscn" id="4_38ciu"]
+[ext_resource type="AudioStream" uid="uid://cvcwfx1ebvxy3" path="res://Local Forecast - Elevator.mp3" id="5_moaof"]
+
+[sub_resource type="SystemFont" id="SystemFont_36pm1"]
+font_names = PackedStringArray("Doppio One")
+
+[sub_resource type="SystemFont" id="SystemFont_ut75y"]
+font_names = PackedStringArray("Doppio One")
+
+[sub_resource type="SystemFont" id="SystemFont_25tsg"]
+font_names = PackedStringArray("Doppio One")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8qeg8")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.286275, 0.286275, 0.286275, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ws8k4")
+expand_mode = 1
+
+[node name="Title" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Title"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Separator" type="Control" parent="Title/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator6" type="Control" parent="Title/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator4" type="Control" parent="Title/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator5" type="Control" parent="Title/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator2" type="Control" parent="Title/VBoxContainer"]
+layout_mode = 2
+
+[node name="Separator3" type="Control" parent="Title/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Title/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.360784, 0.556863, 1, 1)
+theme_override_colors/font_outline_color = Color(0.815686, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_36pm1")
+theme_override_font_sizes/font_size = 72
+text = "Discrete Event Simulator
+"
+
+[node name="Label2" type="Label" parent="Title/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.980392, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.956863, 0, 0, 0.294118)
+theme_override_fonts/font = SubResource("SystemFont_ut75y")
+theme_override_font_sizes/font_size = 56
+text = "Indomaret Fresh"
+
+[node name="ButtonList" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonList"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonList/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Separator" type="Control" parent="ButtonList/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="ButtonList/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 1, 0.419608, 1)
+theme_override_colors/font_pressed_color = Color(0.54902, 0.572549, 0, 1)
+theme_override_colors/font_hover_color = Color(0.54902, 0.572549, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_25tsg")
+theme_override_font_sizes/font_size = 64
+text = "START"
+alignment = 0
+
+[node name="CreditsButton" type="Button" parent="ButtonList/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.211765, 0.509804, 0.882353, 1)
+theme_override_colors/font_pressed_color = Color(0.0509804, 0.235294, 0.45098, 1)
+theme_override_colors/font_hover_color = Color(0.0509804, 0.235294, 0.45098, 1)
+theme_override_fonts/font = SubResource("SystemFont_25tsg")
+theme_override_font_sizes/font_size = 64
+text = "CREDITS"
+alignment = 0
+
+[node name="ExitButton" type="Button" parent="ButtonList/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.533333, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.533333, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_25tsg")
+theme_override_font_sizes/font_size = 64
+text = "EXIT"
+alignment = 0
+
+[node name="Nama" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 48
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Nama"]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Nama/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="Nama/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_1j2d7")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Nama/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "2024
+Benedict Chilwin Punarto
+Kent Carol Erikson
+
+Dosen Pengampu: 
+Dr. Kestrilia Rega Prilianti., M.Si"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Credits" parent="." instance=ExtResource("4_38ciu")]
+visible = false
+layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_moaof")
+volume_db = -12.0
+autoplay = true
